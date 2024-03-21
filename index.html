@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Sorting Hat</title>
+    <style>
+      body {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        height: 100vh;
+        margin: 0;
+      }
+
+      .container {
+        position: relative;
+      }
+
+      .sorting-hat {
+        width: 200px;
+        height: 200px;
+        background-image: url("sorting_hat.png");
+        background-size: cover;
+        cursor: pointer;
+        transition: transform 0.5s;
+      }
+
+      .sorting-hat.shake {
+        animation: shake 0.5s;
+      }
+
+      @keyframes shake {
+        0% {
+          transform: rotate(0deg);
+        }
+        25% {
+          transform: rotate(-15deg);
+        }
+        50% {
+          transform: rotate(15deg);
+        }
+        75% {
+          transform: rotate(-10deg);
+        }
+        100% {
+          transform: rotate(10deg);
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="sorting-hat" id="sortingHat">
+        <img
+          src="https://static.wikia.nocookie.net/harrypotter/images/6/62/Sorting_Hat.png"
+        />
+        <p id="msg">Click the hat</p>
+      </div>
+    </div>
+    <script>
+      const sortingHat = document.getElementById("sortingHat");
+
+      sortingHat.addEventListener("click", () => {
+        sortingHat.classList.add("shake");
+
+        setTimeout(() => {
+          sortingHat.classList.remove("shake");
+          document.getElementById("msg").innerHTML =
+            "You're a hiss hiss bitch, every other house is trash AF";
+        }, 1000);
+      });
+    </script>
+  </body>
+</html>
